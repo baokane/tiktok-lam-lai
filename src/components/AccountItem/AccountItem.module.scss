@@ -1,8 +1,15 @@
 .menu {
+    width: 361px;
     display: flex;
     align-items: center;
     padding: 6px 16px;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+    }
 }
+
 .image {
     width: 40px;
     height: 40px;
@@ -12,10 +19,12 @@
 }
 .info {
 }
+
 .name {
     font-size: 1.6rem;
     font-weight: 600;
 }
+
 .usename {
     font-size: 1.4rem;
     color: rgba(22, 24, 35, 0.5);

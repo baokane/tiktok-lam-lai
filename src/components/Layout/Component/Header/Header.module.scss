@@ -1,11 +1,13 @@
 .wrapper {
     display: flex;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
+    // border-bottom: 1px solid red;
 }
 .inner {
     width: 1150px;
     height: 60px;
     margin: auto;
+    padding: 0 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,6 +15,13 @@
 
 .logo {
     width: 118px;
+}
+
+.header {
+    padding: 5px 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
 }
 
 .search {
@@ -94,4 +103,10 @@
 .no-image {
     width: 32px;
     border-radius: 50%;
+}
+
+.action__list-icon {
+    margin-left: 28px;
+    font-size: 2rem;
+    background-color: var(--white);
 }

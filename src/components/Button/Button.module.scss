@@ -1,0 +1,90 @@
+.wrapper {
+    width: 100px;
+    height: 35px;
+    font-weight: 700;
+    border-radius: 4px;
+    background-color: var(--white);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    user-select: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.wrapper + .wrapper {
+    margin-left: 10px;
+}
+
+.left-icon + .title,
+.title + .right-icon {
+    margin-left: 8px;
+}
+
+.rounded {
+    border-radius: 999px;
+    background-color: var(--white);
+    border: 1px solid rgba(22, 24, 35, 0.12);
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.primary {
+    background-color: var(--primary);
+    color: var(--white);
+
+    &:hover {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), rgb(254, 44, 85);
+    }
+}
+
+.outline {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+
+    &:hover {
+        background-color: rgba(254, 44, 85, 0.06);
+    }
+}
+
+.text:hover {
+    text-decoration: underline;
+}
+
+.disable {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.small {
+    width: 88px;
+    height: 25px;
+}
+
+.large {
+    width: 140px;
+    height: 45px;
+}
+
+.primary.rounded {
+    border-radius: 999px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+}
+
+.left-icon {
+    font-size: 1.4rem;
+}
+
+.right-icon {
+    font-size: 1.4rem;
+    color: var(--black);
+}
+
+.testclass {
+    // background-color: yellow;
+}
