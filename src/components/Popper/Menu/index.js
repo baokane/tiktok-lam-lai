@@ -4,43 +4,46 @@ import { PopperWrapper } from '..';
 import DataMenuItems from './DataMenuItems';
 import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
+import Header from './Header';
 
 const cx = classNames.bind(styles);
 
-function MenuItem({ children, items = [] }) {
+function MenuItem({ children, items = [], className }) {
     const [history, setHistory] = useState([{ data: items }]);
 
     const currentArr = history[history.length - 1];
     const renderItems = () =>
-        currentArr.data.map((item, index) => (
-            <DataMenuItems
-                key={index}
-                data={item}
-                onClick={() => {
-                    if (item.children) {
-                        setHistory((prev) => [...prev, item.children]);
-                    }
-                }}
-            ></DataMenuItems>
-        ));
+        currentArr.data.map((item, index) => {
+            const isParent = !!item.children;
+            return (
+                <DataMenuItems
+                    classData={className}
+                    key={index}
+                    data={item}
+                    onClick={() => {
+                        if (isParent) {
+                            setHistory((prev) => [...prev, item.children]);
+                        }
+                    }}
+                ></DataMenuItems>
+            );
+        });
 
     return (
         <HeadlessTippy
             offset={[12, 10]}
-            visible
+            delay={[0, 700]}
             placement="bottom-end"
+            onHide={() => setHistory((prev) => prev.slice(0, 1))}
             interactive
             render={(attrs) => (
                 <div className="box" tabIndex="-1" {...attrs}>
-                    <PopperWrapper className={cx('wrapper')}>
+                    <PopperWrapper className={cx('popperwrapper')}>
                         {history.length > 1 && (
-                            <h4
-                                onClick={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }}
-                            >
-                                Language
-                            </h4>
+                            <Header
+                                children="Language"
+                                onBack={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
+                            ></Header>
                         )}
                         {renderItems()}
                     </PopperWrapper>

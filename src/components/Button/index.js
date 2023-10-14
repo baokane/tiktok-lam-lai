@@ -6,7 +6,6 @@ const cx = classNames.bind(styles);
 
 function Button({
     children,
-    onClick,
     to,
     href,
     primary,
@@ -19,10 +18,12 @@ function Button({
     className,
     lefticon = false,
     righticon = false,
+    onClick,
+    ...passProps
 }) {
     let Comp = 'button';
 
-    const props = { onClick };
+    const props = { onClick, ...passProps };
 
     if (to) {
         Comp = Link;
