@@ -1,19 +1,25 @@
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import styles from './AccountItem.module.scss';
+import Image from '../Image';
 
 const cx = classNames.bind(styles);
 
-function AccountItem() {
+function AccountItem({ data }) {
     return (
         <div className={cx('menu')}>
-            <img
-                className={cx('image')}
-                src="https://files.fullstack.edu.vn/f8-tiktok/users/3927/63da2f11ce330.jpg"
-                alt="ảnh"
-            ></img>
+            <Image className={cx('image')} src={data.avatar} alt="ảnh"></Image>
             <div className={cx('info')}>
-                <div className={cx('name')}>Name</div>
-                <div className={cx('usename')}>UseName</div>
+                <div>
+                    <span className={cx('name')}>{data.full_name}</span>
+                    {data.tick && (
+                        <span>
+                            <FontAwesomeIcon className={cx('icon')} icon={faCircleCheck} />
+                        </span>
+                    )}
+                </div>
+                <div className={cx('usename')}>{data.nickname}</div>
             </div>
         </div>
     );

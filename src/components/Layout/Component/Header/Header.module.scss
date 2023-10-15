@@ -21,84 +21,6 @@
     padding-top: 8px;
 }
 
-.header {
-    padding: 5px 12px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: rgba(22, 24, 35, 0.5);
-}
-
-.search {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background-color: rgba(22, 24, 35, 0.06);
-    border-radius: 999px;
-    width: 361px;
-    padding-left: 16px;
-    border: 1.5px solid transparent;
-
-    .search-input {
-        height: 40px;
-        background-color: transparent;
-        outline: none;
-        border-color: transparent;
-        width: 291px;
-        font-size: 1.6rem;
-        font-family: var(--font-family);
-        caret-color: var(--primary);
-    }
-
-    &:focus-within {
-        border-color: #c5c6c9;
-    }
-
-    // .search-input:not(:placeholder-shown) ~ .search-btn {
-    //     color: #000;
-    // }
-}
-
-.search-input:not(:placeholder-shown) ~ .search-btn {
-    color: rgba(22, 24, 35, 0.75);
-}
-
-.loading,
-.clear {
-    font-size: 1.4rem;
-    color: rgba(22, 24, 35, 0.34);
-    position: absolute;
-    right: 66px;
-    transform: translateY(-50%);
-    top: 50%;
-}
-
-.search-btn {
-    color: rgba(22, 24, 35, 0.34);
-    position: relative;
-    width: 52px;
-    height: 40px;
-    border-top-right-radius: 999px;
-    border-bottom-right-radius: 999px;
-    outline: none;
-    border-color: transparent;
-
-    &::after {
-        content: '';
-        position: absolute;
-        left: -2px;
-        transform: translateY(-50%);
-        top: 50%;
-        width: 1px;
-        height: 24px;
-        background-color: rgba(22, 24, 35, 0.12);
-    }
-
-    &:hover {
-        background-color: rgba(22, 24, 35, 0.06);
-        cursor: pointer;
-    }
-}
-
 .action {
     display: flex;
     align-items: center;
@@ -114,4 +36,26 @@
     font-size: 2rem;
     background-color: var(--white);
     padding: 6px 10px;
+}
+
+.inbox-icon {
+    position: relative;
+    padding: 0 32px;
+    background-color: var(--white);
+
+    &::after {
+        content: '99+';
+        position: absolute;
+        background-color: var(--primary);
+        top: -6px;
+        right: 18px;
+        width: 34px;
+        height: 19px;
+        border-radius: 999px;
+        color: var(--white);
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
