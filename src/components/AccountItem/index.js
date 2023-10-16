@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import styles from './AccountItem.module.scss';
 import Image from '../Image';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function AccountItem({ data }) {
     return (
-        <div className={cx('menu')}>
+        <Link to={`/@${data.nickname}`} className={cx('menu')}>
             <Image className={cx('image')} src={data.avatar} alt="ảnh"></Image>
             <div className={cx('info')}>
                 <div>
@@ -21,7 +22,7 @@ function AccountItem({ data }) {
                 </div>
                 <div className={cx('usename')}>{data.nickname}</div>
             </div>
-        </div>
+        </Link>
     );
 }
 

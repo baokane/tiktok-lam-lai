@@ -34,6 +34,7 @@ function MenuItem({ children, items = [], className }) {
             offset={[12, 10]}
             delay={[0, 700]}
             placement="bottom-end"
+            hideOnClick={false}
             onHide={() => setHistory((prev) => prev.slice(0, 1))}
             interactive
             render={(attrs) => (
@@ -45,7 +46,7 @@ function MenuItem({ children, items = [], className }) {
                                 onBack={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
                             ></Header>
                         )}
-                        {renderItems()}
+                        <div className={cx('wrapper-scroll')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}

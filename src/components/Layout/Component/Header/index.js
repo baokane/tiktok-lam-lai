@@ -11,6 +11,7 @@ import {
     faKeyboard,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -19,6 +20,7 @@ import Button from '~/components/Button';
 import MenuItem from '~/components/Popper/Menu';
 import Image from '~/components/Image';
 import Search from '../Search';
+import { configRoutes } from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -28,6 +30,30 @@ const menuData = [
         title: 'English',
         children: {
             data: [
+                {
+                    title: 'Tiếng Việt',
+                },
+                {
+                    title: 'Tiếng Anh',
+                },
+                {
+                    title: 'Tiếng Ý',
+                },
+                {
+                    title: 'Tiếng Nhật',
+                },
+                {
+                    title: 'Tiếng Việt',
+                },
+                {
+                    title: 'Tiếng Anh',
+                },
+                {
+                    title: 'Tiếng Ý',
+                },
+                {
+                    title: 'Tiếng Nhật',
+                },
                 {
                     title: 'Tiếng Việt',
                 },
@@ -80,7 +106,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img className={cx('logo')} src={images.logo} alt="logo"></img>
+                <Link to={configRoutes.home}>
+                    <img className={cx('logo')} src={images.logo} alt="logo"></img>
+                </Link>
 
                 <Search></Search>
 

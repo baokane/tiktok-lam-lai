@@ -9,6 +9,7 @@ import AccountItem from '~/components/AccountItem';
 import { MessageIcon, InboxIcon, SearchIcon } from '~/components/icons';
 import styles from './Search.module.scss';
 import useDebounce from '~/hooks/useDebounce';
+
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -45,45 +46,55 @@ function Search() {
         inputRef.current.focus();
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (searchValue.startsWith(' ')) {
+            return;
+        }
+        setSearchValueInput(searchValue);
+    };
+
     return (
-        <Tippy
-            visible={focusInput && searchResult.length > 0}
-            onClickOutside={() => setFocusInput(false)}
-            interactive
-            render={(attrs) => (
-                <div className="box" tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('header')}>Account</h4>
-                        {searchResult.map((dataApi) => (
-                            <AccountItem key={dataApi.id} data={dataApi}></AccountItem>
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-        >
-            <div className={cx('search')}>
-                <input
-                    value={searchValueInput}
-                    ref={inputRef}
-                    className={cx('search-input')}
-                    placeholder="Search videos"
-                    onChange={(e) => setSearchValueInput(e.target.value)}
-                    onFocus={() => setFocusInput(true)}
-                ></input>
-
-                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-
-                {searchValueInput && !loading && (
-                    <button onClick={handleClear}>
-                        <FontAwesomeIcon className={cx('clear')} icon={faCircleXmark} />
-                    </button>
+        <div>
+            <Tippy
+                visible={focusInput && searchResult.length > 0}
+                onClickOutside={() => setFocusInput(false)}
+                interactive
+                render={(attrs) => (
+                    <div className="box" tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('header')}>Account</h4>
+                            {searchResult.map((dataApi) => (
+                                <AccountItem key={dataApi.id} data={dataApi}></AccountItem>
+                            ))}
+                        </PopperWrapper>
+                    </div>
                 )}
+            >
+                <div className={cx('search')}>
+                    <input
+                        value={searchValueInput}
+                        ref={inputRef}
+                        className={cx('search-input')}
+                        placeholder="Search videos"
+                        onChange={handleChange}
+                        onFocus={() => setFocusInput(true)}
+                    ></input>
 
-                <button className={cx('search-btn')}>
-                    <SearchIcon></SearchIcon>
-                </button>
-            </div>
-        </Tippy>
+                    {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
+
+                    {searchValueInput && !loading && (
+                        <button onClick={handleClear}>
+                            <FontAwesomeIcon className={cx('clear')} icon={faCircleXmark} />
+                        </button>
+                    )}
+
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                        <SearchIcon></SearchIcon>
+                    </button>
+                </div>
+            </Tippy>
+        </div>
     );
 }
 

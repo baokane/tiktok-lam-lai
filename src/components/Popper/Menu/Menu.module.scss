@@ -5,10 +5,16 @@
     width: 224px;
     height: 42px;
     cursor: pointer;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
 }
 
 .popperwrapper {
     padding-bottom: 8px;
+    overflow-y: overlay;
+    max-height: 363px;
 }
 
 .icon {
